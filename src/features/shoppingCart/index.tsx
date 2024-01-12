@@ -3,7 +3,7 @@ import { useState } from "react"
 import SearchInput from "./components/searchInput"
 import SelectInput from "./components/selectInput"
 import Button from "./components/button"
-import "./shoppingCart.scss"
+import "./shoppingCart.sass"
 
 const ShoppingCart = () => {
   const [searchValue, setSearchValue] = useState("")

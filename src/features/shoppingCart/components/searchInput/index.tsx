@@ -1,4 +1,4 @@
-import "./searchInput.scss"
+import "./searchInput.sass"
 
 interface ISearchInputProps extends React.HTMLAttributes<HTMLInputElement> {
   value: string

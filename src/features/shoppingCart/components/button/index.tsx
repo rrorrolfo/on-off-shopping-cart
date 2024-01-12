@@ -1,4 +1,4 @@
-import "./button.scss"
+import "./button.sass"
 
 export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode

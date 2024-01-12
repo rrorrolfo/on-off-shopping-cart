@@ -1,5 +1,5 @@
 import { ShopType } from "./types"
-import "./selectInput.scss"
+import "./selectInput.sass"
 
 interface ISelecInputProps extends React.HTMLAttributes<HTMLSelectElement> {
   options: ShopType[]
