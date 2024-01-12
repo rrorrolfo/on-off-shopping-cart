@@ -2,6 +2,7 @@ import { useState } from "react"
 
 import SearchInput from "./components/searchInput"
 import SelectInput from "./components/selectInput"
+import Button from "./components/button"
 import "./shoppingCart.scss"
 
 const ShoppingCart = () => {
@@ -19,6 +20,7 @@ const ShoppingCart = () => {
         value={selectedShop}
         onChange={(e) => setShop(e.target.value)}
       />
+      <Button>Add</Button>
     </div>
   )
 }
