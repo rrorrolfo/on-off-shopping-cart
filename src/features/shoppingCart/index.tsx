@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import SearchInput from "./components/searchInput"
+import Input from "./components/Input"
 import SelectInput from "./components/selectInput"
 import Button from "./components/button"
 import "./shoppingCart.sass"
@@ -11,7 +11,7 @@ const ShoppingCart = () => {
   return (
     <div className="shopping-cart">
       <span className="shopping-cart__title">Add to cart:</span>
-      <SearchInput
+      <Input
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
       />

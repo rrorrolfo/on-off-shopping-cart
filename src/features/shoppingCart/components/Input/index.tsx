@@ -1,11 +1,11 @@
-import "./searchInput.sass"
+import "./Input.sass"
 
-interface ISearchInputProps extends React.HTMLAttributes<HTMLInputElement> {
+interface IInputProps extends React.HTMLAttributes<HTMLInputElement> {
   value: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const SearchInput = ({ value, onChange, ...props }: ISearchInputProps) => {
+const Input = ({ value, onChange, ...props }: IInputProps) => {
   return (
     <input
       type="text"
@@ -21,4 +21,4 @@ const SearchInput = ({ value, onChange, ...props }: ISearchInputProps) => {
   )
 }
 
-export default SearchInput
+export default Input
