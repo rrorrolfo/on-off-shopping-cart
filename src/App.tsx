@@ -1,5 +1,5 @@
 import ShoppingCart from "./features/shoppingCart"
-import "./App.scss"
+import "./App.sass"
 
 function App() {
   return (
