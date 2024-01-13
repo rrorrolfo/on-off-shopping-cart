@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios"
-import { ShopType } from "../features/shoppingCart/types"
+import { ShopType } from "../common/types/shops"
 
 export const fetchShopsList = async (): Promise<ShopType[] | undefined> =>
   axios

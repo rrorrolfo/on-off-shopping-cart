@@ -1,4 +1,4 @@
-import { ShopType } from "./types"
+import { ShopType } from "../../../../common/types/shops"
 import "./selectInput.sass"
 
 interface ISelecInputProps extends React.HTMLAttributes<HTMLSelectElement> {
