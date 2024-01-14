@@ -25,28 +25,30 @@ const ShoppingCart = () => {
   }, [])
   return (
     <div className="shopping-cart">
-      <span className="shopping-cart__title">Add to cart:</span>
-      <Input
-        value={productName}
-        onChange={(e) => setProductName(e.target.value)}
-      />
-      <SelectInput
-        options={shopsList}
-        value={selectedShop}
-        onChange={(e) => setShop(e.target.value)}
-      />
-      <Button
-        onClick={() => {
-          dispatch(
-            generateIDAndAddProductToCart({
-              name: productName,
-              shop: selectedShop,
-            }),
-          )
-        }}
-      >
-        Add
-      </Button>
+      <div className="shopping-cart__inputs-container">
+        <span className="shopping-cart__title">Add to cart:</span>
+        <Input
+          value={productName}
+          onChange={(e) => setProductName(e.target.value)}
+        />
+        <SelectInput
+          options={shopsList}
+          value={selectedShop}
+          onChange={(e) => setShop(e.target.value)}
+        />
+        <Button
+          onClick={() => {
+            dispatch(
+              generateIDAndAddProductToCart({
+                name: productName,
+                shop: selectedShop,
+              }),
+            )
+          }}
+        >
+          Add
+        </Button>
+      </div>
       <ProductsTable products={productsInCart} />
     </div>
   )
