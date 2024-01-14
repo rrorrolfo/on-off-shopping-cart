@@ -3,12 +3,14 @@ import { useState, useEffect } from "react"
 import Input from "./components/Input"
 import SelectInput from "./components/selectInput"
 import Button from "./components/button"
+import ProductsTable from "./components/productsTable"
 import "./shoppingCart.sass"
 
 import { selectShopsList } from "../../store/reducers/shops"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { fetchShops } from "../../store/actions/shops"
 import { generateIDAndAddProductToCart } from "../../store/actions/shoppingCart"
+import { selectProductsInCart } from "../../store/reducers/shoppingCart"
 
 const ShoppingCart = () => {
   const dispatch = useAppDispatch()
@@ -16,6 +18,7 @@ const ShoppingCart = () => {
   const [productName, setProductName] = useState("")
   const [selectedShop, setShop] = useState("")
   const shopsList = useAppSelector(selectShopsList)
+  const productsInCart = useAppSelector(selectProductsInCart)
 
   useEffect(() => {
     dispatch(fetchShops())
@@ -44,6 +47,7 @@ const ShoppingCart = () => {
       >
         Add
       </Button>
+      <ProductsTable products={productsInCart} />
     </div>
   )
 }
