@@ -4,9 +4,12 @@
         display: flex
     &__row:nth-child(odd)
         background-color: #FBFBFB
-    &__table-cell:nth-child(-n + 2)
-        width: 33%
     &__table-cell
         padding: 15px
+    &__table-cell:nth-child(-n + 2)
+        width: 33%
+        padding: 15px 25px
     &__table-cell--red-text
         color: #F54436
+    &__table-cell:last-child
+        padding-left: 0
