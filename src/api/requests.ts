@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios"
 import { ShopType } from "../common/types/shops"
 
-export const fetchShopsList = async (): Promise<ShopType[] | undefined> =>
+export const fetchShopsList = async (): Promise<ShopType[]> =>
   axios
     .get("/data/shops.json")
     .then((res: AxiosResponse) => res.data)
