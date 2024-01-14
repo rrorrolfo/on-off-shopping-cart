@@ -1,9 +1,10 @@
-import thunk, { ThunkAction } from "redux-thunk"
+import thunk, { ThunkAction, ThunkDispatch } from "redux-thunk"
 import {
   legacy_createStore as createStore,
   applyMiddleware,
   Store,
   Action,
+  AnyAction,
 } from "redux"
 import { composeWithDevTools } from "@redux-devtools/extension"
 import rootReducer from "../store/reducers"
@@ -13,7 +14,6 @@ export const store: Store = createStore(
   composeWithDevTools(applyMiddleware(thunk)),
 )
 
-export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
@@ -21,3 +21,4 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >
+export type AppDispatch = ThunkDispatch<RootState, any, AnyAction>
