@@ -15,8 +15,15 @@ const shoppingCart = (
   action: { type: string; payload: ProductType },
 ): ShoppingcartState => {
   switch (action.type) {
-    case ADD_PRODUCT:
-      return { ...state, products: [...state.products, action.payload] }
+    case ADD_PRODUCT: {
+      const updatedProducts = [...state.products, action.payload]
+      const sortFunc = (a: ProductType, b: ProductType) => {
+        return a.sortOrder - b.sortOrder
+      }
+      const sortedProducts = updatedProducts.toSorted(sortFunc)
+
+      return { ...state, products: sortedProducts }
+    }
     case REMOVE_PRODUCT:
       return {
         ...state,
