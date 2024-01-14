@@ -11,6 +11,13 @@ const addProductToCart = (product: ProductType) => {
   }
 }
 
+const removeProduct = (product: ProductType) => {
+  return {
+    type: REMOVE_PRODUCT,
+    payload: product,
+  }
+}
+
 export const generateIDAndAddProductToCart =
   (product: ProductTypeWithoutID): AppThunk =>
   (dispatch) => {
@@ -23,4 +30,10 @@ export const generateIDAndAddProductToCart =
         id: String(newID),
       }),
     )
+  }
+
+export const removeProductFromCart =
+  (product: ProductType): AppThunk =>
+  (dispatch) => {
+    dispatch(removeProduct(product))
   }
