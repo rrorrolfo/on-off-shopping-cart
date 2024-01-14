@@ -9,20 +9,36 @@ import "./shoppingCart.sass"
 import { selectShopsList } from "../../store/reducers/shops"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { fetchShops } from "../../store/actions/shops"
-import { generateIDAndAddProductToCart } from "../../store/actions/shoppingCart"
+import {
+  addProductWithoutIDToCart,
+  removeProductFromCart,
+} from "../../store/actions/shoppingCart"
 import { selectProductsInCart } from "../../store/reducers/shoppingCart"
+import { ProductType } from "../../common/types/shoppingCart"
 
 const ShoppingCart = () => {
-  const dispatch = useAppDispatch()
-
   const [productName, setProductName] = useState("")
   const [selectedShop, setShop] = useState("")
+
+  const dispatch = useAppDispatch()
   const shopsList = useAppSelector(selectShopsList)
   const productsInCart = useAppSelector(selectProductsInCart)
+
+  const handleAddClick = () =>
+    dispatch(
+      addProductWithoutIDToCart({
+        name: productName,
+        shop: selectedShop,
+      }),
+    )
+
+  const handleDeleteClick = (product: ProductType) =>
+    dispatch(removeProductFromCart(product))
 
   useEffect(() => {
     dispatch(fetchShops())
   }, [])
+
   return (
     <div className="shopping-cart">
       <div className="shopping-cart__inputs-container">
@@ -36,20 +52,12 @@ const ShoppingCart = () => {
           value={selectedShop}
           onChange={(e) => setShop(e.target.value)}
         />
-        <Button
-          onClick={() => {
-            dispatch(
-              generateIDAndAddProductToCart({
-                name: productName,
-                shop: selectedShop,
-              }),
-            )
-          }}
-        >
-          Add
-        </Button>
+        <Button onClick={handleAddClick}>Add</Button>
       </div>
-      <ProductsTable products={productsInCart} />
+      <ProductsTable
+        products={productsInCart}
+        onDeleteClick={handleDeleteClick}
+      />
     </div>
   )
 }
