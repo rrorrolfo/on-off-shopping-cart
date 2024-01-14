@@ -59,6 +59,9 @@ const ShoppingCart = () => {
           options={shopsList}
           value={selectedShop}
           onChange={(e) => setShop(e.target.value)}
+          invalid={!hasShopSelected}
+          showError={!hasShopSelected}
+          errorMessage="You must select a shop"
         />
         <Button onClick={handleAddClick}>Add</Button>
       </div>
