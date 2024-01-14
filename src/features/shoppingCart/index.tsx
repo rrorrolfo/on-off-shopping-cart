@@ -8,11 +8,12 @@ import "./shoppingCart.sass"
 import { selectShopsList } from "../../store/reducers/shops"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { fetchShops } from "../../store/actions/shops"
+import { generateIDAndAddProductToCart } from "../../store/actions/shoppingCart"
 
 const ShoppingCart = () => {
   const dispatch = useAppDispatch()
 
-  const [searchValue, setSearchValue] = useState("")
+  const [productName, setProductName] = useState("")
   const [selectedShop, setShop] = useState("")
   const shopsList = useAppSelector(selectShopsList)
 
@@ -23,15 +24,26 @@ const ShoppingCart = () => {
     <div className="shopping-cart">
       <span className="shopping-cart__title">Add to cart:</span>
       <Input
-        value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
+        value={productName}
+        onChange={(e) => setProductName(e.target.value)}
       />
       <SelectInput
         options={shopsList}
         value={selectedShop}
         onChange={(e) => setShop(e.target.value)}
       />
-      <Button>Add</Button>
+      <Button
+        onClick={() => {
+          dispatch(
+            generateIDAndAddProductToCart({
+              name: productName,
+              shop: selectedShop,
+            }),
+          )
+        }}
+      >
+        Add
+      </Button>
     </div>
   )
 }
