@@ -38,4 +38,14 @@ const shops = (
 export const selectShopsList = (state: RootState): ShopType[] =>
   state.shops.shopsList
 
+export const selectShopByID = (
+  state: RootState,
+  id: string,
+): ShopType | undefined => {
+  const shopsList = selectShopsList(state)
+  return shopsList?.find(
+    (shop: ShopType) => shop.id.toLowerCase() === id.toLowerCase(),
+  )
+}
+
 export default shops
