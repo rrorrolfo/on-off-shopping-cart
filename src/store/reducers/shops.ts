@@ -5,15 +5,16 @@ import {
   FETCH_SHOPS_ERROR,
   FETCH_SHOPS_SUCCESS,
 } from "../constants/shops"
+import { RootState } from "../../app/store"
 
 type InitialState = {
-  shops: ShopType[]
+  shopsList: ShopType[]
   loading: boolean
   error: boolean
 }
 
 const initialState: InitialState = {
-  shops: [],
+  shopsList: [],
   loading: false,
   error: false,
 }
@@ -26,12 +27,15 @@ const shops = (
     case FETCH_SHOPS:
       return { ...state, loading: true }
     case FETCH_SHOPS_SUCCESS:
-      return { ...state, loading: false, shops: payload as ShopType[] }
+      return { ...state, loading: false, shopsList: payload as ShopType[] }
     case FETCH_SHOPS_ERROR:
       return { ...state, loading: false, error: true }
     default:
       return state
   }
 }
+
+export const selectShopsList = (state: RootState): ShopType[] =>
+  state.shops.shopsList
 
 export default shops
