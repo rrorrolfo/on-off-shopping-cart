@@ -1,5 +1,6 @@
 import { ADD_PRODUCT, REMOVE_PRODUCT } from "../constants/shoppingCart"
 import { ProductType } from "../../common/types/shoppingCart"
+import { RootState } from "../../app/store"
 
 type ShoppingcartState = {
   products: ProductType[]
@@ -20,5 +21,8 @@ const shoppingCart = (
       return state
   }
 }
+
+export const selectProductsInCart = (state: RootState): ProductType[] =>
+  state.shoppingCart.products
 
 export default shoppingCart
