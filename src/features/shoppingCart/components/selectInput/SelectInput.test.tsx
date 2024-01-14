@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react"
 import SelectInput from "."
+import { ShopType } from "../../../../common/types/shops"
 
-const options = [
+const options: ShopType[] = [
   {
     name: "Rimi",
     id: "Rimi",
