@@ -6,7 +6,7 @@ import Button from "./components/button"
 import ProductsTable from "./components/productsTable"
 import "./shoppingCart.sass"
 
-import { selectShopsList } from "../../store/reducers/shops"
+import { selectShopsList, selectShopByID } from "../../store/reducers/shops"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { fetchShops } from "../../store/actions/shops"
 import {
@@ -23,6 +23,9 @@ const ShoppingCart = () => {
   const dispatch = useAppDispatch()
   const shopsList = useAppSelector(selectShopsList)
   const productsInCart = useAppSelector(selectProductsInCart)
+  const selectedShopData = useAppSelector((state) =>
+    selectShopByID(state, selectedShop),
+  )
   const validProductName = productName.length > 0
   const hasShopSelected = selectedShop.length > 0
 
@@ -32,6 +35,7 @@ const ShoppingCart = () => {
         addProductWithoutIDToCart({
           name: productName,
           shop: selectedShop,
+          sortOrder: selectedShopData ? selectedShopData.sortOrder : 0,
         }),
       )
     }
