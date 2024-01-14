@@ -23,14 +23,19 @@ const ShoppingCart = () => {
   const dispatch = useAppDispatch()
   const shopsList = useAppSelector(selectShopsList)
   const productsInCart = useAppSelector(selectProductsInCart)
+  const validProductName = productName.length > 0
+  const hasShopSelected = selectedShop.length > 0
 
-  const handleAddClick = () =>
-    dispatch(
-      addProductWithoutIDToCart({
-        name: productName,
-        shop: selectedShop,
-      }),
-    )
+  const handleAddClick = () => {
+    if (validProductName && hasShopSelected) {
+      dispatch(
+        addProductWithoutIDToCart({
+          name: productName,
+          shop: selectedShop,
+        }),
+      )
+    }
+  }
 
   const handleDeleteClick = (product: ProductType) =>
     dispatch(removeProductFromCart(product))
@@ -41,11 +46,14 @@ const ShoppingCart = () => {
 
   return (
     <div className="shopping-cart">
+      <span className="shopping-cart__title">Add to cart:</span>
       <div className="shopping-cart__inputs-container">
-        <span className="shopping-cart__title">Add to cart:</span>
         <Input
           value={productName}
           onChange={(e) => setProductName(e.target.value)}
+          invalid={!validProductName}
+          showError={!validProductName}
+          errorMessage="Product name cannot be empty"
         />
         <SelectInput
           options={shopsList}
