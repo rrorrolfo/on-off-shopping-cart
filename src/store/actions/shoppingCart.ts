@@ -18,7 +18,7 @@ const removeProduct = (product: ProductType) => {
   }
 }
 
-export const generateIDAndAddProductToCart =
+export const addProductWithoutIDToCart =
   (product: ProductTypeWithoutID): AppThunk =>
   (dispatch) => {
     const { name, shop } = product
