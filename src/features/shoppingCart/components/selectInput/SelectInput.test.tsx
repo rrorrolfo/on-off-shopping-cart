@@ -44,3 +44,32 @@ test("Select element displays the correct value", () => {
   const incorrectSelectElemet = screen.queryByDisplayValue("Rimi")
   expect(incorrectSelectElemet).not.toBeInTheDocument()
 })
+
+test("Select element should NOT show error message and error styling when it does not have an error", () => {
+  render(<SelectInput options={options} value="Maxima" onChange={() => {}} />)
+  const selectElement = screen.getByDisplayValue("Maxima")
+  const messageElement = screen.queryByText(/error message/i)
+
+  expect(selectElement).toBeInTheDocument()
+  expect(messageElement).not.toBeInTheDocument()
+  expect(selectElement.getAttribute("class")).not.toMatch(/invalid/gi)
+})
+
+test("Select element should show correct style and message when it has an error", () => {
+  render(
+    <SelectInput
+      options={options}
+      value=""
+      onChange={() => {}}
+      invalid
+      showError
+      errorMessage="Error message"
+    />,
+  )
+  const selectElement = screen.getByDisplayValue("Select Shop")
+  const messageElement = screen.getByText(/error message/i)
+
+  expect(selectElement).toBeInTheDocument()
+  expect(messageElement).toBeInTheDocument()
+  expect(selectElement.getAttribute("class")).toMatch(/invalid/gi)
+})
