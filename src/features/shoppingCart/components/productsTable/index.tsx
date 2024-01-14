@@ -4,9 +4,10 @@ import { ProductType } from "../../../../common/types/shoppingCart"
 
 type ProductsTableProps = {
   products: ProductType[]
+  onDeleteClick: (product: ProductType) => void
 }
 
-const ProductsTable = ({ products }: ProductsTableProps) => {
+const ProductsTable = ({ products, onDeleteClick }: ProductsTableProps) => {
   return (
     <table className="products-table" role="table" aria-label="products-table">
       <tbody>
@@ -20,7 +21,7 @@ const ProductsTable = ({ products }: ProductsTableProps) => {
             <td className="products-table__table-cell">{shop}</td>
             <td
               className="products-table__table-cell products-table__table-cell--red-text"
-              onClick={() => {}}
+              onClick={() => onDeleteClick({ name, id, shop })}
             >
               Delete
             </td>
