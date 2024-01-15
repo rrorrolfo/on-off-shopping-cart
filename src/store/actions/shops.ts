@@ -12,20 +12,20 @@ export type ShopsAction = {
   payload?: ShopType[]
 }
 
-const fetchShopsStarted = (): ShopsAction => {
+export const fetchShopsStarted = (): ShopsAction => {
   return {
     type: FETCH_SHOPS,
   }
 }
 
-const fetchShopsSuccess = (shopsList: ShopType[]): ShopsAction => {
+export const fetchShopsSuccess = (shopsList: ShopType[]): ShopsAction => {
   return {
     type: FETCH_SHOPS_SUCCESS,
     payload: shopsList,
   }
 }
 
-const fetchShopsError = (): ShopsAction => {
+export const fetchShopsError = (): ShopsAction => {
   return {
     type: FETCH_SHOPS_ERROR,
   }
