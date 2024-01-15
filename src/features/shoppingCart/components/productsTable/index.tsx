@@ -11,7 +11,7 @@ const ProductsTable = ({ products, onDeleteClick }: ProductsTableProps) => {
   return (
     <table className="products-table" role="table" aria-label="products-table">
       <tbody>
-        {products.map(({ name, id, shop }) => (
+        {products.map(({ name, id, shop, sortOrder }) => (
           <tr
             key={id}
             className="products-table__row"
@@ -21,7 +21,7 @@ const ProductsTable = ({ products, onDeleteClick }: ProductsTableProps) => {
             <td className="products-table__table-cell">{shop}</td>
             <td
               className="products-table__table-cell products-table__table-cell--red-text"
-              onClick={() => onDeleteClick({ name, id, shop })}
+              onClick={() => onDeleteClick({ name, id, shop, sortOrder })}
             >
               Delete
             </td>
