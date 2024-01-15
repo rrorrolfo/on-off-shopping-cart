@@ -4,8 +4,9 @@ Shopping cart app that allows the user to add a product to a shopping cart after
 
 ## Technical specifications
 
-This app was bootstrapped with vite-template-redux and adjusted to use redux without Redux-toolkit as Kätlin mentioned that the on/off projects do not use redux-toolkit yet.
+This app was bootstrapped with vite-template-redux and adjusted to use redux without Redux-toolkit as Kätlin mentioned that the on/off projects do not use redux-toolkit yet. The folder structure follows the ["feature folders" structure recommended with redux applications](https://redux.js.org/faq/code-structure)
 
+Tech stack:
 React was used to build UI components.
 React-redux with thunk-actions was used for the app state management.
 Typescipt was used tor typechecking the app.
