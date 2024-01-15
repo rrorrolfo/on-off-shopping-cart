@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 
-import Input from "./components/Input"
-import SelectInput from "./components/selectInput"
-import Button from "./components/button"
+import Input from "../../common/components/Input"
+import SelectInput from "../../common/components/selectInput"
+import Button from "../../common/components/button"
 import ProductsTable from "./components/productsTable"
 import "./shoppingCart.sass"
 
@@ -58,6 +58,9 @@ const ShoppingCart = () => {
           invalid={!validProductName}
           showError={!validProductName}
           errorMessage="Product name cannot be empty"
+          id="product-search-input"
+          name="product-search-input"
+          placeholder="Name"
         />
         <SelectInput
           options={shopsList}
@@ -66,8 +69,17 @@ const ShoppingCart = () => {
           invalid={!hasShopSelected}
           showError={!hasShopSelected}
           errorMessage="You must select a shop"
+          className="shops-select"
+          id="shops-select"
+          name="shops-select"
         />
-        <Button onClick={handleAddClick}>Add</Button>
+        <Button
+          onClick={handleAddClick}
+          name="add-button"
+          className="add-button"
+        >
+          Add
+        </Button>
       </div>
       <ProductsTable
         products={productsInCart}
