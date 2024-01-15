@@ -2,7 +2,7 @@ import { ADD_PRODUCT, REMOVE_PRODUCT } from "../constants/shoppingCart"
 import { ProductType } from "../../common/types/shoppingCart"
 import { RootState } from "../../app/store"
 
-type ShoppingcartState = {
+export type ShoppingcartState = {
   products: ProductType[]
 }
 
