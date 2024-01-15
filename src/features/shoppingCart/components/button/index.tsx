@@ -3,16 +3,25 @@ import "./button.sass"
 export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  name?: string
+  className?: string
 }
 
-const Button = ({ children = "Button", onClick, ...props }: IButtonProps) => {
+const Button = ({
+  children = "Button",
+  onClick,
+  name = "",
+  className = "",
+  ...props
+}: IButtonProps) => {
   return (
     <button
       role="button"
       type="button"
-      aria-label="add-button"
-      className="add-button"
+      aria-label={name}
+      className={className}
       onClick={onClick}
+      name={name}
       {...props}
     >
       {children}
