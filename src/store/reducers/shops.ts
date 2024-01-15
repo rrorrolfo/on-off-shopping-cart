@@ -35,6 +35,9 @@ const shops = (
   }
 }
 
+export const selectShopsState = (state: RootState): ShopsInitialState =>
+  state.shops
+
 export const selectShopsList = (state: RootState): ShopType[] =>
   state.shops.shopsList
 
