@@ -6,7 +6,11 @@ import Button from "../../common/components/button"
 import ProductsTable from "./components/productsTable"
 import "./shoppingCart.sass"
 
-import { selectShopsList, selectShopByID } from "../../store/reducers/shops"
+import {
+  selectShopsState,
+  selectShopsList,
+  selectShopByID,
+} from "../../store/reducers/shops"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { fetchShops } from "../../store/actions/shops"
 import {
@@ -26,6 +30,7 @@ const ShoppingCart = () => {
   const selectedShopData = useAppSelector((state) =>
     selectShopByID(state, selectedShop),
   )
+  const shopsState = useAppSelector(selectShopsState)
   const validProductName = productName.length > 0
   const hasShopSelected = selectedShop.length > 0
 
@@ -43,6 +48,19 @@ const ShoppingCart = () => {
 
   const handleDeleteClick = (product: ProductType) =>
     dispatch(removeProductFromCart(product))
+
+  const defineSelectErrorMessage = () => {
+    const { loading, error } = shopsState
+    if (loading) {
+      return "Loading Shops"
+    }
+
+    if (error) {
+      return "There was an error, please refresh the page"
+    }
+
+    return "You must select a shop"
+  }
 
   useEffect(() => {
     dispatch(fetchShops())
@@ -68,7 +86,7 @@ const ShoppingCart = () => {
           onChange={(e) => setShop(e.target.value)}
           invalid={!hasShopSelected}
           showError={!hasShopSelected}
-          errorMessage="You must select a shop"
+          errorMessage={defineSelectErrorMessage()}
           className="shops-select"
           id="shops-select"
           name="shops-select"
