@@ -1,13 +1,20 @@
-import { ShopType } from "../../../../common/types/shops"
 import "./selectInput.sass"
 
+type OptionType = {
+  id: string
+  name: string
+}
+
 interface ISelecInputProps extends React.HTMLAttributes<HTMLSelectElement> {
-  options: ShopType[]
+  options: OptionType[]
   value: string
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
   invalid?: boolean
   showError?: boolean
   errorMessage?: string
+  className?: string
+  id: string
+  name?: string
 }
 
 const SelectInput = ({
@@ -17,18 +24,21 @@ const SelectInput = ({
   invalid = false,
   showError = false,
   errorMessage = "",
+  className = "",
+  id,
+  name = "",
   ...props
 }: ISelecInputProps) => {
   return (
     <div className="select--container">
       <select
-        name="shops-select"
-        id="shops-select"
+        name={name}
+        id={id}
         value={value}
         onChange={onChange}
         role="select"
-        aria-label="shops-select"
-        className={`shops-select ${invalid ? "invalid" : ""}`}
+        aria-label={name}
+        className={`${className} ${invalid ? "invalid" : ""}`}
         {...props}
       >
         <option value="">Select Shop</option>
