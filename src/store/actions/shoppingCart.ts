@@ -4,14 +4,14 @@ import { AppThunk } from "../../app/store"
 
 type ProductTypeWithoutID = Omit<ProductType, "id">
 
-const addProductToCart = (product: ProductType) => {
+export const addProductToCart = (product: ProductType) => {
   return {
     type: ADD_PRODUCT,
     payload: product,
   }
 }
 
-const removeProduct = (product: ProductType) => {
+export const removeProduct = (product: ProductType) => {
   return {
     type: REMOVE_PRODUCT,
     payload: product,
