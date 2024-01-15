@@ -6,6 +6,9 @@ interface IInputProps extends React.HTMLAttributes<HTMLInputElement> {
   invalid?: boolean
   showError?: boolean
   errorMessage?: string
+  id: string
+  name?: string
+  placeholder?: string
 }
 
 const Input = ({
@@ -14,18 +17,20 @@ const Input = ({
   invalid = false,
   showError = false,
   errorMessage = "",
+  id,
+  name = "",
+  placeholder = "",
   ...props
 }: IInputProps) => {
   return (
     <div className="input--container">
       <input
         type="text"
-        id="product-search-input"
-        data-testid="product-search-input"
-        name="product-search-input"
+        id={id}
+        name={name}
         onChange={onChange}
         value={value}
-        placeholder="Name"
+        placeholder={placeholder}
         className={`input ${invalid ? "invalid" : ""}`}
         {...props}
       />
