@@ -7,13 +7,13 @@ import {
 } from "../constants/shops"
 import { RootState } from "../../app/store"
 
-type InitialState = {
+export type ShopsInitialState = {
   shopsList: ShopType[]
   loading: boolean
   error: boolean
 }
 
-const initialState: InitialState = {
+const initialState: ShopsInitialState = {
   shopsList: [],
   loading: false,
   error: false,
@@ -22,7 +22,7 @@ const initialState: InitialState = {
 const shops = (
   state = initialState,
   { type, payload }: ShopsAction,
-): InitialState => {
+): ShopsInitialState => {
   switch (type) {
     case FETCH_SHOPS:
       return { ...state, loading: true }
