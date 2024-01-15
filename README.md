@@ -1,17 +1,17 @@
-# vite-template-redux
+# On/Off Shopping cart
 
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
+Shopping cart app that allows the user to add a product to a shopping cart after writing the name of the product and selecting the shop it belongs to. The user can delete the products in the cart by clicking the "delete" button.
 
-```sh
-npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
-```
+## Technical specifications
 
-## Goals
+This app was bootstrapped with vite-template-redux and adjusted to use redux without Redux-toolkit as Kätlin mentioned that the on/off projects do not use redux-toolkit yet.
 
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
-- Optimized performance compared to Create React App
-- Customizable without ejecting
+React was used to build UI components.
+React-redux with thunk-actions was used for the app state management.
+Typescipt was used tor typechecking the app.
+SASS was used for styling components.
+Axios was used for handling http requests.
+React testing library, vitest, and mock service worker were used for testing the app.
 
 ## Scripts
 
@@ -19,9 +19,3 @@ npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
 - `build` - build for production
 - `preview` - locally preview production build
 - `test` - launch test runner
-
-## Inspiration
-
-- [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
-- [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
-- [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
